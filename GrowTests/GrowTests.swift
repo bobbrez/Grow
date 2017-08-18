@@ -11,26 +11,21 @@ import XCTest
 
 class GrowTests: XCTestCase {
     
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    // MARK: Food Class Tests
+    
+    func testFoodInitializationSuccess() {
+        let zeroRatingFood = Food.init(name: "Zero", image: nil, raiting: 0)
+        XCTAssertNotNil(zeroRatingFood)
+        
+        let positiveRaitingFood = Food.init(name: "One", image: nil, raiting: 5)
+        XCTAssertNotNil(positiveRaitingFood)
     }
     
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
+    func testFoodInitializationFails() {
+        let negativeRatingFood = Food.init(name: "Negative", image: nil, raiting: -1)
+        XCTAssertNil(negativeRatingFood)
+        
+        let blankNameFood = Food.init(name: "", image: nil, raiting: 1)
+        XCTAssertNil(blankNameFood)
     }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
 }
